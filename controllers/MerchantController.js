@@ -122,4 +122,4 @@ class MerchantController {
   }
 }
 
-module.exports = MerchatController;
+module.exports = MerchantController;

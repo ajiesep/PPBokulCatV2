@@ -2,11 +2,11 @@ const express = require('express')
 const customer = express.Router()
 const CustController = require('../controllers/CustomerController')
 
-buyer.get('/', CustController.home)
-buyer.get('/categories', CustController.showCategories)
-buyer.get('/categories/:CategoryId', CustController.sortCategory)
+customer.get('/', CustController.home)
+customer.get('/categories', CustController.showCategories)
+customer.get('/categories/:CategoryId', CustController.sortCategory)
 
-buyer.get('/buyProduct/:id', CustController.buyProduct)
-buyer.get('/buyProduct/:id/stockDecrease', CustController.minStock)
+customer.get('/buyProduct/:id', CustController.buyProduct)
+customer.get('/buyProduct/:id/stockDecrease', CustController.minStock)
 
 module.exports = customer

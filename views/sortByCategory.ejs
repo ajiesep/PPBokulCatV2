@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category</title>
+
+    <!-- Script -->
+    <%- include('./partials/_script') %>
+</head>
+<body>
+    <!-- Navbar -->
+    <%- include('./partials/_navbar') %>
+
+    <!-- Title -->
+    <div class="my-10 text-4xl font-bold text-center container mx-auto">
+        <h1><%= title %></h1>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="container flex gap-4 my-4 mx-auto pb-2 justify-center border-b-4 border-b-sky-900">
+        <div>
+            <a href="/buyer/categories">
+                <button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">All</button>
+            </a>
+        </div>
+        <div>
+            <% categories.forEach(el => { %>
+                <a href="/buyer/categories/<%= el.id %>">
+                    <button class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"><%= el.categoryName %></button>
+                </a>
+            <% }); %>
+        </div>
+    </div>
+
+    <!-- Product Cards -->
+    <div class="container mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <% category.Products.forEach(el => { %>
+                <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 hover:scale-105">
+                    <img class="p-8 rounded-t-lg" src="<%= el.imageURL %>" alt="product image" />
+                    <div class="px-5 pb-5">
+                        <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white"><%= el.productName %></h5>
+                        <div class="flex items-center justify-between">
+                            <span class="text-3xl font-bold text-gray-900 dark:text-white"><%= rupiahFormat(el.price) %></span>
+                            <a href="/buyer/buyProduct/<%= el.id %>" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See Details</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <!-- Footer -->
+     <%- include('./partials/_footer') %>
+
+</body>
+</html>
