@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "productName": "Spray Paint",
+    "description": "Cat semprot local product",
+    "price": 30000,
+    "stock": 10,
+    "imageURL": "https://artwhale.ph/wp-content/uploads/2019/10/MTN-Hardcore-Spray-Paint-400ml.jpg",
+    "CategoryId": 1
+  },
+  {
+    "id": 2,
+    "productName": "Paint Brush",
+    "description": "kuas untuk keperluan melukis",
+    "price": 5000,
+    "stock": 10,
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV5ycfduVbf4b9rb4IDuRkeit-sYUzoRwZqg&s",
+    "CategoryId": 2
+  },
+  {
+    "id": 3,
+    "productName": "Ink",
+    "description": "tinta untuk melukis",
+    "price": 5000,
+    "stock": 10,
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGxeQ48mObAyooQaX_DGxz02Xqm0sORKARHA&s",
+    "CategoryId": 2
+  },
+  {
+    "id": 4,
+    "productName": "Acrylic Paint",
+    "description": "cat yang cepat kering untuk seniman",
+    "price": 45000,
+    "stock": 15,
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRc_e740gZOqugu-buTTQA9vKM6RTGWlyZnQ&s",
+    "CategoryId": 1
+  },
+  {
+    "id": 5,
+    "productName": "Canvas Board",
+    "description": "papan untuk melukis",
+    "price": 20000,
+    "stock": 25,
+    "imageURL": "https://m.media-amazon.com/images/I/71Kbb4MG1cL._AC_UF894,1000_QL80_.jpg",
+    "CategoryId": 2
+  },
+  {
+    "id": 6,
+    "productName": "Caps",
+    "description": "caps dengan berbagai macam ukuran",
+    "price": 60000,
+    "stock": 8,
+    "imageURL": "https://id-test-11.slatic.net/p/3ef91e952027a8abb81d43bb8110b872.jpg",
+    "CategoryId": 1
+  },
+  {
+    "id": 7,
+    "productName": "Glove montana",
+    "description": "sarung tangan untuk melindungi tangan dari tumpahan cat",
+    "price": 12000,
+    "stock": 30,
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaGuw6WFBr1nxjAcXi8_SmeSip-o-Uuyn7nw&s",
+    "CategoryId": 3
+  },
+  {
+    "id": 8,
+    "productName": "Marker posca",
+    "description": "spidol untuk tagging",
+    "price": 10000,
+    "stock": 40,
+    "imageURL": "https://down-id.img.susercontent.com/file/50e7b144197278ae2bd25d14a761ab52",
+    "CategoryId": 2
+  }
+]
