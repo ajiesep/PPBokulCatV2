@@ -1,4 +1,8 @@
-function rupiahFormat(value){
-    let data = value.tolocaleString("id-ID", {style:"currency", currency:"IDR"})
-    return data
+function rupiahFormat(num) {
+  let data = num.toLocaleString("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  });
+  return data;
 }
+module.exports = rupiahFormat;

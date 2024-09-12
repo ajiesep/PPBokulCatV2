@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       Account.belongsToMany(models.Product, { through: models.AccountProduct });
       Account.hasMany(models.AccountProduct);
     }
+    // instance method
+    nameAddress() {
+      return `${this.name} - ${this.address}`;
+    }
   }
   Account.init(
     {
@@ -64,7 +68,13 @@ module.exports = (sequelize, DataTypes) => {
           },
         },
       },
-      UserId: DataTypes.INTEGER,
+      UserId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "User",
+          key: "id",
+        },
+      },
     },
     {
       sequelize,

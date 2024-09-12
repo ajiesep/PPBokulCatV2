@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const { Op } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     /**
@@ -13,48 +14,44 @@ module.exports = (sequelize, DataTypes) => {
       Product.hasMany(models.AccountProduct);
     }
 
-    //  QRcode 
+    //  QRcode
     static async dataQR(id) {
       try {
-        let product = await Product.findByPk(id)
+        let product = await Product.findByPk(id);
         let data = {
           name: product.productName,
-          price: product.price
-        }
+          price: product.price,
+        };
 
-        return data
-
+        return data;
       } catch (error) {
-        throw error
+        throw error;
       }
     }
 
-    // SEARCH 
+    // SEARCH
     static async searchProduct(search) {
       try {
-        let data
+        let data;
         if (search) {
           data = await Product.findAll({
-            order: [['productName']],
+            order: [["productName"]],
             where: {
               productName: {
-                [Op.iLike]: `%${search}%`
-              }
-            }
-          })
-        }
-        else {
+                [Op.iLike]: `%${search}%`,
+              },
+            },
+          });
+        } else {
           data = await Product.findAll({
-            order: [['productName']]
-          })
+            order: [["productName"]],
+          });
         }
-        return data
-
+        return data;
       } catch (error) {
-        throw error
+        throw error;
       }
     }
-
   }
   Product.init(
     {
@@ -111,7 +108,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       price: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
           notEmpty: {
@@ -127,7 +124,7 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       CategoryId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
           notEmpty: {

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <style>
+      .background {
+        background-image: url("https://plus.unsplash.com/premium_photo-1692603374105-b671abcb8a2e?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body class="background h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-medium">
+      <h2 class="text-3xl font-extrabold mb-4 text-center text-gray-800">
+        Welcome to Jokul Cat
+      </h2>
+      <p class="text-lg mb-6 text-center text-gray-600">
+        Good times for shopping the best graffiti tools here
+      </p>
+      <!-- bikin if error -->
+      <form action="/login" method="POST" class="space-y-6 mb-4">
+        <div>
+          <label for="email" class="block text-gray-800 font-medium mb-2">
+            Email
+          </label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="email"
+            class="shadow-md appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+
+        <div>
+          <label for="password" class="block text-gray-800 font-medium mb-2">
+            Password
+          </label>
+          <div class="relative">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+              class="shadow-md appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <button
+              type="button"
+              class="absolute inset-y-0 right-0 px-4 text-gray-600"
+              onclick="togglePassword()"
+            >
+              Show
+            </button>
+          </div>
+        </div>
+
+        <div class="div">
+          <div>
+            <button
+              type="submit"
+              class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg w-full hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </form>
+      <!-- <a
+        href="/"
+        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-300 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-yellow-300 md:dark:hover:bg-transparent underline"
+        >Forgot password</a
+      > -->
+      <a
+        class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-yellow-300 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-yellow-300 md:dark:hover:bg-transparent underline"
+        href="/register"
+        >Doesn't have an account?</a
+      >
+    </div>
+    <script>
+      function togglePassword() {
+        var passwordField = document.getElementById("password");
+        var toggleButton = passwordField.nextElementSibling;
+        if (passwordField.type === "password") {
+          passwordField.type = "text";
+          toggleButton.textContent = "Hide";
+        } else {
+          passwordField.type = "password";
+          toggleButton.textContent = "Show";
+        }
+      }
+    </script>
+  </body>
+</html>

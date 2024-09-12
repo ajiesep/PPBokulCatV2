@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+      <!-- Script -->
+      <%- include('./partial/_script') %>
+</head>
+<body>
+    <!-- Title -->
+    <div class="my-10 text-4xl font-bold text-center container mx-auto">
+      <h1>Register Account</h1>
+    </div>
+
+    <!-- Error Message -->
+    <div class="container my-5 mx-auto text-center">
+     
+    </div>
+
+    <!-- Register Form-->
+    <div class="container mx-auto my-10">
+      <form method="post" action="/register" class="max-w-sm mx-auto">
+        <div class="mb-5">
+          <label for="userName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">User Name</label>
+          <input name="name" type="text" id="userName" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="User name"/>
+        </div>
+        
+        <div class="mb-5">
+          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Email</label>
+          <input name="email" type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="email@email.com"/>
+        </div>
+        <div class="mb-5">
+          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Password</label>
+          <input name="password" type="text" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"/>
+        </div>
+        <div class="mb-5">
+          <label for="Address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Address</label>
+          <input name="address" type="text" id="Address" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Alamat"/>
+        </div>
+        <div class="mb-5">
+          <label for="Phone Number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Phone Number</label>
+          <input name="phoneNumber" type="tel" id="Phone Number" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"  placeholder="08xxxxxxx"/>
+        </div>
+        <div class="my-5 items-center mx-auto">
+          <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Role</label>
+          <div class="flex items-center my-5">
+            <input  id="default-radio-2" type="radio" value="buyer" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="default-radio-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-black">Buyer</label>
+        </div>
+          <div class="flex items-center my-5">
+            <input  id="default-radio-2" type="radio" value="seller" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="default-radio-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-black">Seller</label>
+          </div>
+        </div>
+        <div class="mx-auto text-center">
+          <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
+        </div>
+      </form>
+    </div>
+</body>
+</html>

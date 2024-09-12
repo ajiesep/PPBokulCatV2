@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bokul Product</title>
+    <style>
+      body {
+        background-image: url("https://images.unsplash.com/photo-1460923396110-d57007bc184f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+      }
+      .container-background {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 6px 12px rgba(176, 174, 174, 0.2);
+        margin-bottom: 2rem;
+      }
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+      .category-card-hover:hover {
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+      }
+      .card-image {
+        transition: transform 0.3s ease;
+      }
+      .card-image:hover {
+        transform: scale(1.05);
+      }
+      .title {
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+      .search-bar input {
+        border-color: #ddd;
+        transition: border-color 0.3s;
+      }
+      .search-bar input:focus {
+        border-color: #0056b3;
+      }
+      .search-button {
+        background: linear-gradient(90deg, #007bff, #0056b3);
+        color: #fff;
+        transition: background 0.3s;
+      }
+      .search-button:hover {
+        background: linear-gradient(90deg, #0056b3, #003d80);
+      }
+      .product-button {
+        background: linear-gradient(90deg, #28a745, #218838);
+        color: #fff;
+        transition: background 0.3s;
+      }
+      .product-button:hover {
+        background: linear-gradient(90deg, #218838, #1e7e34);
+      }
+      .category-button {
+        background: linear-gradient(90deg, #17a2b8, #117a8b);
+        color: #fff;
+        transition: background 0.3s;
+      }
+      .category-button:hover {
+        background: linear-gradient(90deg, #117a8b, #0c5460);
+      }
+    </style>
+    <!-- Script -->
+    <%- include('./partials/_script') %>
+  </head>
+  <body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white">
+    <!-- Navbar -->
+    <%- include('./partials/_navbar') %>
+
+    <!-- Title -->
+    <div
+      class="my-10 text-4xl font-bold text-center container mx-auto container-background"
+    >
+      <h1 class="title">Bokul Product</h1>
+    </div>
+
+    <!-- Main Content -->
+    <section class="py-12">
+      <div class="container mx-auto container-background">
+        <div
+          class="grid grid-cols-5 md:grid-cols-1 gap-10 p-8 bg-white rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:shadow-xl hover:scale-105 dark:bg-gray-800 dark:shadow-none dark:hover:shadow-lg"
+        >
+          <!-- Product Image -->
+          <div
+            class="flex justify-center items-center p-4 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out dark:bg-dark-white-700"
+          >
+            <img
+              src="<%= product.imageURL %>"
+              alt="productImage"
+              class="rounded-lg max-w-full h-auto transition-transform transform hover:scale-105 duration-300 ease-in-out shadow-lg"
+            />
+          </div>
+
+          <!-- Product Details -->
+          <div
+            class="space-y-8 p-6 bg-gray-50 rounded-lg shadow-md dark:bg-gray-700"
+          >
+            <!-- Product Name -->
+            <h3
+              class="text-4xl font-bold text-gray-900 dark:text-white tracking-tight"
+            >
+              <%= product.productName %>
+            </h3>
+
+            <!-- Description Section -->
+            <div class="space-y-4">
+              <label
+                class="text-lg font-semibold text-gray-700 dark:text-gray-300"
+              >
+                Description:
+              </label>
+              <p
+                class="text-base text-justify text-gray-800 dark:text-gray-200 leading-relaxed"
+              >
+                <%= product.description %>
+              </p>
+            </div>
+
+            <!-- Stock and Price -->
+            <div
+              class="flex flex-col sm:flex-row sm:justify-between space-y-4 sm:space-y-0"
+            >
+              <h3
+                class="text-lg font-semibold text-gray-900 dark:text-gray-200"
+              >
+                Stock: <%= product.stock %>
+              </h3>
+              <h3 class="text-lg font-bold text-green-600 dark:text-green-400">
+                Harga: <%= rupiahFormat(product.price) %>
+              </h3>
+            </div>
+
+            <!-- QR Code Section -->
+            <div class="text-center mt-8">
+              <label
+                class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4"
+              >
+                QR to Bokul:
+              </label>
+              <div class="flex justify-center">
+                <img
+                  src="<%= qrDataURL %>"
+                  alt="QR Code"
+                  class="w-40 h-40 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 ease-in-out"
+                />
+              </div>
+            </div>
+
+            <!-- Buy Button -->
+            <div class="text-center mt-8">
+              <a
+                href="/customer/buyProduct/<%= product.id%>/stockDecrease"
+                class="inline-block text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-gradient-to-l focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-lg px-8 py-3 transition-all duration-300 ease-in-out dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+              >
+                Bokul Product
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

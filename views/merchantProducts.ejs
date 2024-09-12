@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merchant Product</title>
+
+    <!-- Script -->
+    <%- include('./partials/_script') %>
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900">
+    <!-- Navbar -->
+    <nav class="bg-white border-gray-200 dark:bg-gray-800 shadow-lg">
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+      >
+        <a
+          href="/merchant/<%= merchantId %>"
+          class="flex items-center space-x-3 rtl:space-x-reverse"
+        >
+          <img src="" class="h-8" alt="" />
+          <span
+            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+          >
+            JokulCat
+          </span>
+        </a>
+        <button
+          data-collapse-toggle="navbar-dropdown"
+          type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-5 h-5"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+          <ul
+            class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800"
+          >
+            <li>
+              <a
+                href="/merchant/<%= merchantId %>"
+                class="py-2 px-3 text-blue-700 rounded bg-blue-100 md:bg-transparent md:text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:bg-blue-800"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="/merchant/<%= merchantId %>/product/add"
+                class="py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:text-blue-700 dark:text-white"
+              >
+                Add Product
+              </a>
+            </li>
+            <li>
+              <a
+                href="/logout"
+                class="py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:text-blue-700 dark:text-white"
+              >
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Title -->
+    <div
+      class="my-10 text-4xl font-bold text-center text-gray-800 dark:text-white container mx-auto"
+    >
+      <h1><%= account.nameAddress() %></h1>
+    </div>
+
+    <!-- Delete Notification -->
+    <% if (deleted) { %>
+    <div
+      class="my-5 text-xl font-bold text-center text-red-600 container mx-auto"
+    >
+      <p>Product <%= deleted %> has been removed</p>
+    </div>
+    <% } %>
+
+    <!-- Products Table -->
+    <div class="container mx-auto mb-10">
+      <div class="relative overflow-x-auto shadow-lg sm:rounded-lg">
+        <table
+          class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 text-center"
+        >
+          <thead
+            class="text-xs uppercase bg-gray-200 dark:bg-gray-700 dark:text-stone-300"
+          >
+            <tr>
+              <% ["Image", "Name", "Description", "Category", "Stock", "Price",
+              "Action"].forEach(el => { %>
+              <th scope="col" class="px-6 py-3"><%= el %></th>
+              <% }); %>
+            </tr>
+          </thead>
+          <tbody>
+            <% products.forEach(el => { %>
+            <tr
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700"
+            >
+              <td class="px-6 py-4">
+                <img
+                  src="<%= el.imageURL %>"
+                  alt="productImage"
+                  class="h-12 w-12 object-cover rounded-md"
+                />
+              </td>
+              <td class="px-6 py-4"><%= el.productName %></td>
+              <td class="px-6 py-4 text-justify"><%= el.description %></td>
+              <td class="px-6 py-4"><%= el.Category.categoryName %></td>
+              <td class="px-6 py-4"><%= el.stock %></td>
+              <td class="px-6 py-4"><%= rupiahFormat(el.price) %></td>
+              <td>
+                <div class="p-4 flex flex-wrap gap-4 justify-center">
+                  <a
+                    href="/merchant/<%= merchantId %>/product/<%= el.id %>/edit"
+                  >
+                    <button
+                      class="text-amber-400 hover:text-white border border-amber-400 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-lg px-5 py-2.5 hover:scale-110 transition transform"
+                    >
+                      Edit
+                    </button>
+                  </a>
+                  <a
+                    href="/merchant/<%= merchantId %>/product/<%= el.id %>/delete"
+                  >
+                    <button
+                      class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg px-5 py-2.5 hover:scale-110 transition transform"
+                    >
+                      Delete
+                    </button>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Add Product Button -->
+    <div class="container text-center mx-auto mb-20">
+      <a
+        href="/merchant/<%= merchantId %>/product/add"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 transition-transform transform hover:scale-105"
+      >
+        Add Product
+      </a>
+    </div>
+  </body>
+</html>
