@@ -4,6 +4,7 @@ const rupiahFormat = require("../helpers/rupiahFormat.js");
 const qr = require("qrcode");
 
 class CustController {
+  // search di hompage
   static async home(req, res) {
     try {
       const { search } = req.query;
@@ -68,6 +69,7 @@ class CustController {
       let product = await Product.findByPk(+id, {
         include: [Category],
       });
+      // ngambil dari static method di model
       let dataQR = await Product.dataQR(+id);
 
       dataQR = JSON.stringify(dataQR);

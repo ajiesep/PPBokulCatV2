@@ -25,6 +25,9 @@
         Good times for shopping the best graffiti tools here
       </p>
       <!-- bikin if error -->
+      <% if (errors) { %>
+      <p class="text-red-500"><%= errors %></p>
+      <% } %>
       <form action="/login" method="POST" class="space-y-6 mb-4">
         <div>
           <label for="email" class="block text-gray-800 font-medium mb-2">

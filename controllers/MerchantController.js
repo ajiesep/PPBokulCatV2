@@ -4,6 +4,7 @@ const rupiahFormat = require("../helpers/rupiahFormat.js");
 const accountproduct = require("../models/accountproduct");
 
 class MerchantController {
+  // ngambil data
   static async listProduct(req, res) {
     try {
       const { deleted } = req.query;

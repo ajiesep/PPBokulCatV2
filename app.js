@@ -6,6 +6,7 @@ const session = require("express-session");
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
+//session
 app.use(
   session({
     secret: "keyboard cat",

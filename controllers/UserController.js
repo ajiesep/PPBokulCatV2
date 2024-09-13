@@ -62,6 +62,7 @@ class UserController {
       // console.log("User found:", find); // Cek apakah user ditemukan
 
       if (find) {
+        // compare pass yg di input dengan yg di db
         const isValidPassword = bcrypt.compareSync(password, find.password);
         // console.log("Is valid password:", isValidPassword); // Cek apakah password benar
 
