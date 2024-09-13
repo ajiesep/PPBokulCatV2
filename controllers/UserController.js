@@ -11,7 +11,8 @@ class UserController {
   }
   static async formRegister(req, res) {
     try {
-      res.render("registerForm");
+      const { errors } = req.query;
+      res.render("registerForm", { errors });
     } catch (error) {
       res.send(error.message);
     }
